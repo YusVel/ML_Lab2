@@ -1,25 +1,37 @@
 section .data
-	a dw 0
-	b dw 0
-	c dw 0
+	a dd 0
+	b dd 0
+	c dd 0
 global calculate_us
 section .text
 calculate_us:
 	mov [a], di
 	mov [b], si
 	mov [c], dx
-	xor ax, ax
-	add ax, 55
+	xor eax, eax
+	mov eax, 55
+	
 	sub ax, [b]
 	add ax, [a]
+	
+	
 	xor ebx,ebx
-	movzx ebx, ax
+	mov ebx, eax
 	mov ax, -88
 	cwd 
 	xor ecx,ecx
 	mov ecx, [c]
+	
+	;xor edx,edx
+	
 	idiv cx
+	ret
+	
 	add ax, 1 
+	
 	xchg eax, ebx
+	
+	xor edx,edx
+	
 	idiv bx
 	ret
