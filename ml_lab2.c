@@ -1,15 +1,20 @@
 #include <stdio.h>
 #include <stdint.h>
 
-//extern short calculate_s (short a, short b, short c);
-extern short calculate_us (short a, short b, short c);
+//extern short calculate_s ();
+extern short calculate_us ();
+int32_t A = 0; //числитель
+double B= 0; // знаминатель
+double RESULT = 0 ;
+
+int32_t a = 0;
+int32_t b= 0;
+int32_t c = 0;
 
 int main()
 {
 	printf("Велиметов Юсуп Касумович\tПИБ 32 з\tLAB  2: Вариант 4\n");
-	int32_t a = 0;
-	int32_t b= 0;
-	int32_t c = 0;
+
 	int err  = 0;
 	while(err!=3)
 	{
@@ -37,8 +42,9 @@ int main()
 	}
 	printf("Вы ввели:  %d, %d, %d\n",a, b, c ); 
 	 
-	printf("Результат вычисления на СИ: %f\n" ,(double)( (double)(55-b+a)/((double)-88/c+1))); 
-	printf("Результат вычисления на ASM: %d\n" ,calculate_us(a,b,c)); 
+	printf("Результат вычисления на СИ: (55-%d+%d)/(-88/%d+1) = %d/%5.2lf = %5.2f\n" ,b,a,c,(55-b+a),((double)-88/c+1),(double)( (double)(55-b+a)/((double)-88/c+1))); 
+	calculate_us ();
+	printf("Результат вычисления на ASM: (55-%d+%d)/(-88/%d+1) = %d/%5.2lf = %5.2f\n" ,b,a,c,A,B,RESULT); 
 	 
 	
 	return 0;
