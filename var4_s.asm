@@ -19,23 +19,30 @@ calculate_s:
 	xor ax, ax
 	mov ax, 55
 	
-	sub al, [b1]
-	adc al, [a1]
+	xor bx,bx
+	movsx bx, [b1]
+	
+	sub ax,  bx
+	
+	movsx bx, [a1]
+	
+	add ax, bx
 	
 	mov [A], ax ;подсчитали числитель
-
+	xor dx,dx
 	xor ax,ax
-	mov ax, -88
-	idiv byte [c1] 
-	add ax, 1
-	cbw
+	mov eax, -88
+	movsx bx, [c1]
 	cwd
+	idiv  bx
+	add ax, 1
+
 	mov [_B], ax
 	xor dx,dx
 	mov bx, ax
 
 	mov ax, [A]
-
+	cwd
 	idiv  bx
 	mov [ostatok_ot_RESULT], dx 
 
